@@ -110,6 +110,14 @@ func main() {
 
 	// --- AUTH ROUTES ---
 	
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"status":  "active",
+			"message": "pong",
+			"time":    time.Now().Format(time.RFC3339),
+		})
+	})
+	
 	// 1. Đăng ký: Cần băm (hash) mật khẩu trước khi lưu vào DB
 	r.POST("/register", func(c *gin.Context) {
 		var user User
